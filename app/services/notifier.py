@@ -11,7 +11,7 @@ async def send_telegram_message(text: str) -> bool:
     chat_id = settings.telegram_chat_id
 
     if not token or not chat_id:
-        print("[notifier] Telegram no configurado")
+        print("[notifier] Telegram is not configured")
         return False
 
     url = f"https://api.telegram.org/bot{token}/sendMessage"
@@ -28,14 +28,14 @@ async def send_telegram_message(text: str) -> bool:
             response.raise_for_status()
             return True
     except Exception as e:
-        print(f"[notifier] Error enviando Telegram: {e}")
+        print(f"[notifier] Error sending Telegram message: {e}")
         return False
 
 
 async def notify_change(summary: str, url: str) -> bool:
     message = (
-        f"🔔 <b>Cambio detectado</b>\n\n"
+        f"🔔 <b>Change detected</b>\n\n"
         f"{summary}\n\n"
-        f"🔗 <a href=\"{url}\">Ver página</a>"
+        f"🔗 <a href=\"{url}\">View page</a>"
     )
     return await send_telegram_message(message)

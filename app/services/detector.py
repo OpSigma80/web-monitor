@@ -52,7 +52,7 @@ def build_summary(
     new_value: str,
     monitor_type: str = "selector",
 ) -> str:
-    old_norm = normalize_text(old_value) if old_value else "(sin valor previo)"
+    old_norm = normalize_text(old_value) if old_value else "(no previous value)"
     new_norm = normalize_text(new_value)
 
     old_num = extract_number(old_norm)
@@ -61,10 +61,10 @@ def build_summary(
     if old_num is not None and new_num is not None and old_num != 0:
         diff = new_num - old_num
         pct = (diff / old_num) * 100
-        direction = "subió" if diff > 0 else "bajó"
+        direction = "rose" if diff > 0 else "fell"
         return (
-            f"[{monitor_name}] El valor {direction} de {old_norm} a {new_norm} "
+            f"[{monitor_name}] The value {direction} from {old_norm} to {new_norm} "
             f"({diff:+.2f} / {pct:+.1f}%)"
         )
 
-    return f"[{monitor_name}] Cambió de «{old_norm}» a «{new_norm}»"
+    return f"[{monitor_name}] Changed from \"{old_norm}\" to \"{new_norm}\""
