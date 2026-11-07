@@ -1,0 +1,8 @@
+{
+  "remote.portsAttributes": {
+    "8005": {
+      "label": "Web Monitor API",
+      "onAutoForward": "openBrowser"
+    }
+  }
+}
