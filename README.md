@@ -4,7 +4,7 @@
 
 ### Telegram Price Alert
 
-<img width="421" height="250" alt="imagen" src="https://github.com/user-attachments/assets/ad383175-786a-4a37-a9ef-0570839cb5e5" />
+<img width="423" height="123" alt="imagen" src="https://github.com/user-attachments/assets/56216f94-7bde-4364-9d82-c54ed499d107" />
 
 
 
