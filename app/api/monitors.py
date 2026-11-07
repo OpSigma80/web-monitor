@@ -2,10 +2,11 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlmodel import select
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import delete as sqlalchemy_delete
 
 from app.database import get_session
 from app.auth import require_api_auth
-from app.models import Monitor, Change
+from app.models import Monitor, Snapshot, Change
 from app.schemas import MonitorCreate, MonitorUpdate, MonitorRead, ChangeRead
 from app.workers.tasks import check_monitor
 
@@ -75,6 +76,13 @@ async def delete_monitor(monitor_id: int, session: AsyncSession = Depends(get_se
     monitor = await session.get(Monitor, monitor_id)
     if not monitor:
         raise HTTPException(status_code=404, detail="Monitor no encontrado")
+
+    await session.execute(
+        sqlalchemy_delete(Change).where(Change.monitor_id == monitor_id)
+    )
+    await session.execute(
+        sqlalchemy_delete(Snapshot).where(Snapshot.monitor_id == monitor_id)
+    )
     await session.delete(monitor)
     await session.commit()
 
