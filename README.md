@@ -1,6 +1,12 @@
 # Web Monitor Pro
 
-![Web Monitor Pro](app/static/web-monitor-pro.png)
+<img width="968" height="590" alt="imagen" src="https://github.com/user-attachments/assets/87ee5c9c-79ee-4f2c-86f8-ead210e64c2d" />
+
+### Telegram Price Alert
+
+<img width="421" height="250" alt="imagen" src="https://github.com/user-attachments/assets/ad383175-786a-4a37-a9ef-0570839cb5e5" />
+
+
 
 A full-stack website monitoring service built with Python, FastAPI, PostgreSQL, Redis, and ARQ.
 
