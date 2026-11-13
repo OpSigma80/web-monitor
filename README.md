@@ -85,3 +85,12 @@ ARQ runs `check_all_due_monitors` at startup and at five-minute intervals. Indiv
 - Replace default credentials before deployment.
 - Use HTTPS for public deployments.
 - Restrict CORS and expose only required ports.
+
+## Tests
+
+37 automated tests cover change detection, number parsing (US and European formats), CSS/XPath extraction, and the price-monitor JSON path. They run without a database, network, or Telegram:
+
+```bash
+pip install -r requirements-dev.txt
+python -m pytest
+```
