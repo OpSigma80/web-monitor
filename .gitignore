@@ -6,3 +6,5 @@ __pycache__/
 uvicorn.log
 .DS_Store
 informacion.txt
+
+.vscode/
