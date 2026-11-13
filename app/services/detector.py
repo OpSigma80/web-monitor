@@ -18,7 +18,15 @@ def extract_number(value: str) -> Optional[float]:
     if not value:
         return None
     cleaned = re.sub(r"[^\d,.-]", "", value)
-    cleaned = cleaned.replace(".", "").replace(",", ".") if "," in cleaned and "." in cleaned else cleaned.replace(",", ".")
+    if "," in cleaned and "." in cleaned:
+        if cleaned.rfind(",") > cleaned.rfind("."):
+            # European format: 1.234,56 -> 1234.56
+            cleaned = cleaned.replace(".", "").replace(",", ".")
+        else:
+            # US format: 1,234.56 -> 1234.56
+            cleaned = cleaned.replace(",", "")
+    else:
+        cleaned = cleaned.replace(",", ".")
     try:
         return float(cleaned)
     except ValueError:
